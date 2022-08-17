@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.10.0
+  hooks_riverpod: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -43,5 +44,5 @@ flutter:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/thasbeeh_counter.png"
+  image_path: "assets/tasbeeh_counter.png"
   min_sdk_android: 21
