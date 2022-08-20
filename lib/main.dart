@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasbeeh_counter/screens/home_screen.dart';
-import 'package:tasbeeh_counter/theme.dart';
+import 'package:tasbeeh_counter/shared/theme.dart';
 
 void main() {
   runApp(const TasbeehCounterApp());
