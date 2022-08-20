@@ -20,7 +20,7 @@ class HomeBody extends ConsumerWidget {
         // Tasbeeh Counter outer image
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 40),
+            padding: const EdgeInsets.only(top: 20),
             child: SvgPicture.asset(
               assetName,
               color: primaryColor,
@@ -32,7 +32,7 @@ class HomeBody extends ConsumerWidget {
         // Tasbeeh Counter inner image
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 40),
+            padding: const EdgeInsets.only(top: 20),
             child: SvgPicture.asset(
               assetName,
               color: tasbeehCounterColor,
@@ -43,7 +43,7 @@ class HomeBody extends ConsumerWidget {
         ),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 70),
+            padding: const EdgeInsets.only(top: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

@@ -29,24 +29,29 @@ class CounterDisplay extends ConsumerWidget {
               return SizedBox(
                 height: maxHeight * 0.95,
                 width: maxWidth * 0.845,
-                child: Center(
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        right: 0,
-                        child: DigitalNumber(
-                          value: notifier,
-                          height: maxHeight * 0.65,
-                          color: Colors.black,
-                        ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      top: 0,
+                      child: DigitalNumber(
+                        value: notifier,
+                        height: maxHeight * 0.65,
+                        color: Colors.black,
                       ),
-                      DigitalNumber(
+                    ),
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      top: 0,
+                      child: DigitalNumber(
                         value: 888888,
                         height: maxHeight * 0.65,
                         color: Colors.black12,
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
               );
             },
