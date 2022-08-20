@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tasbeeh_counter/providers/counter_notifier_provider.dart';
 import 'package:tasbeeh_counter/widgets/digital_font/digital_font.dart';
 
-class CounterDisplay extends StatelessWidget {
+class CounterDisplay extends ConsumerWidget {
   const CounterDisplay({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.watch(counterNotifierProvider);
+
     return Center(
       child: Container(
         height: 70,
@@ -31,7 +35,7 @@ class CounterDisplay extends StatelessWidget {
                       Positioned(
                         right: 0,
                         child: DigitalNumber(
-                          value: 69,
+                          value: notifier,
                           height: maxHeight * 0.65,
                           color: Colors.black,
                         ),

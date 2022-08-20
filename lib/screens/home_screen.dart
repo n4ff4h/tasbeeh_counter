@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: scaffoldBackgroundColor,
         elevation: 0,
-        leading: Image.asset('assets/tasbeeh_counter.png'),
+        leading: Image.asset('assets/images/tasbeeh_counter.png'),
         title: const Text(
           'Tasbeeh Counter',
           style: TextStyle(
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       body: const HomeBody(),
       bottomNavigationBar: SizedBox(
         width: size.width,
-        height: 175,
+        height: 125,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const [
