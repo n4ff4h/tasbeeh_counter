@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tasbeeh_counter/providers/counter_notifier_provider.dart';
+import 'package:tasbeeh_counter/providers/counter_provider.dart';
 import 'package:tasbeeh_counter/widgets/digital_font/digital_font.dart';
 
 class CounterDisplay extends ConsumerWidget {
@@ -10,7 +10,7 @@ class CounterDisplay extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.watch(counterNotifierProvider);
+    final notifier = ref.watch(counterProvider);
 
     return Center(
       child: Container(

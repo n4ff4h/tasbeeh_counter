@@ -1,7 +1,10 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tasbeeh_counter/providers/counter_notifier_provider.dart';
+import 'package:tasbeeh_counter/providers/button_row_provider.dart';
+import 'package:tasbeeh_counter/providers/counter_provider.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
 import 'package:tasbeeh_counter/widgets/circular_button.dart';
 import 'package:tasbeeh_counter/widgets/counter_display.dart';
@@ -11,7 +14,8 @@ class HomeBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.watch(counterNotifierProvider.notifier);
+    final counterNotifier = ref.watch(counterProvider.notifier);
+    final buttonRow = ref.watch(buttonRowProvider);
 
     const String assetName = 'assets/images/tasbeeh_counter_layout.svg';
 
@@ -61,7 +65,7 @@ class HomeBody extends ConsumerWidget {
                         color: iconColor,
                         size: 32,
                       ),
-                      onPressed: () => notifier.decrement(),
+                      onPressed: () => counterNotifier.decrement(),
                     ),
                     const SizedBox(width: 105),
                     // Refresh button
@@ -73,7 +77,7 @@ class HomeBody extends ConsumerWidget {
                         color: iconColor,
                         size: 32,
                       ),
-                      onPressed: () => notifier.reset(),
+                      onPressed: () => counterNotifier.reset(),
                     ),
                   ],
                 ),
@@ -82,7 +86,18 @@ class HomeBody extends ConsumerWidget {
                   size: 65,
                   color: primaryColor,
                   child: null,
-                  onPressed: () => notifier.increment(),
+                  onPressed: () {
+                    counterNotifier.increment();
+                    if (buttonRow.hasToggledVibrate) {
+                      HapticFeedback.vibrate();
+                    }
+                    if (buttonRow.hasToggledSound) {
+                      //SystemSound.play(SystemSoundType.click);
+                      AudioPlayer().play(
+                        AssetSource('audio/button_click.mp3'),
+                      );
+                    }
+                  },
                 ),
               ],
             ),
