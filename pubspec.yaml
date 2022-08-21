@@ -33,7 +33,7 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/audio/button_click.mp3
+    - assets/audios/
 
   # fonts:
   #   - family: Schyler

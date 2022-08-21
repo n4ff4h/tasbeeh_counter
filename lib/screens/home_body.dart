@@ -94,7 +94,7 @@ class HomeBody extends ConsumerWidget {
                     if (buttonRow.hasToggledSound) {
                       //SystemSound.play(SystemSoundType.click);
                       AudioPlayer().play(
-                        AssetSource('audio/button_click.mp3'),
+                        AssetSource('audios/click.wav'),
                       );
                     }
                   },
