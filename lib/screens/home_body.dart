@@ -28,8 +28,8 @@ class HomeBody extends ConsumerWidget {
             child: SvgPicture.asset(
               assetName,
               color: primaryColor,
-              height: 420,
-              width: 420,
+              height: outerTasbeehCounterSvgSize,
+              width: outerTasbeehCounterSvgSize,
             ),
           ),
         ),
@@ -40,14 +40,14 @@ class HomeBody extends ConsumerWidget {
             child: SvgPicture.asset(
               assetName,
               color: tasbeehCounterColor,
-              height: 390,
-              width: 390,
+              height: innerTasbeehCounterSvgSize,
+              width: innerTasbeehCounterSvgSize,
             ),
           ),
         ),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 50),
+            padding: const EdgeInsets.only(top: 55),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -58,24 +58,24 @@ class HomeBody extends ConsumerWidget {
                   children: [
                     // Undo button
                     CircularButton(
-                      size: 10,
+                      size: iconButtonSize,
                       color: secondaryColor,
                       child: const Icon(
-                        Icons.undo,
+                        Icons.undo_rounded,
                         color: iconColor,
-                        size: 32,
+                        size: iconSize,
                       ),
                       onPressed: () => counterNotifier.decrement(),
                     ),
                     const SizedBox(width: 105),
                     // Refresh button
                     CircularButton(
-                      size: 10,
+                      size: iconButtonSize,
                       color: secondaryColor,
                       child: const Icon(
-                        Icons.refresh,
+                        Icons.refresh_rounded,
                         color: iconColor,
-                        size: 32,
+                        size: iconSize,
                       ),
                       onPressed: () => counterNotifier.reset(),
                     ),
@@ -83,7 +83,7 @@ class HomeBody extends ConsumerWidget {
                 ),
                 // Increment button
                 CircularButton(
-                  size: 65,
+                  size: counterButtonSize,
                   color: primaryColor,
                   child: null,
                   onPressed: () {
@@ -92,7 +92,6 @@ class HomeBody extends ConsumerWidget {
                       HapticFeedback.vibrate();
                     }
                     if (buttonRow.hasToggledSound) {
-                      //SystemSound.play(SystemSoundType.click);
                       AudioPlayer().play(
                         AssetSource('audios/click.wav'),
                       );

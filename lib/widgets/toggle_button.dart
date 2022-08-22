@@ -20,7 +20,9 @@ class ToggleButton extends ConsumerWidget {
       onPressed: onPressed,
       style: ButtonStyle(
         shape: MaterialStateProperty.all(const CircleBorder()),
-        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.all(iconButtonSize),
+        ),
         backgroundColor: MaterialStateProperty.all(
             buttonActiveState ? const Color(0xFFFFCB42) : primaryColor),
         elevation: MaterialStateProperty.all(0),
@@ -28,7 +30,7 @@ class ToggleButton extends ConsumerWidget {
       child: Icon(
         icon,
         color: iconColor,
-        size: 32,
+        size: iconSize,
       ),
     );
   }

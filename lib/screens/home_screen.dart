@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/screens/home_body.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
+import 'package:tasbeeh_counter/widgets/circular_button.dart';
 import 'package:tasbeeh_counter/widgets/toggle_button.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -36,17 +37,30 @@ class HomeScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ToggleButton(
-              icon: Icons.volume_up,
+              icon: Icons.volume_up_rounded,
               onPressed: buttonRowNotifier.toggleSound,
               buttonActiveState: buttonRow.hasToggledSound,
             ),
             ToggleButton(
-              icon: Icons.vibration,
+              icon: Icons.vibration_rounded,
               onPressed: buttonRowNotifier.toggleVibration,
               buttonActiveState: buttonRow.hasToggledVibrate,
             ),
-            //ToggleButton(icon: Icons.add_alert),
-            //ToggleButton(icon: Icons.dark_mode),
+            CircularButton(
+              size: iconButtonSize,
+              color: primaryColor,
+              child: const Icon(
+                Icons.notification_add_rounded,
+                color: iconColor,
+                size: iconSize,
+              ),
+              onPressed: () {},
+            ),
+            ToggleButton(
+              icon: Icons.dark_mode_rounded,
+              onPressed: buttonRowNotifier.setDarkMode,
+              buttonActiveState: buttonRow.isDarkMode,
+            ),
           ],
         ),
       ),
