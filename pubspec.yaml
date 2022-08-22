@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ^2.0.15
   freezed_annotation: ^2.1.0
   audioplayers: ^1.0.1
+  flutter_native_splash: ^2.2.8
 
 dev_dependencies:
   flutter_test:
@@ -52,3 +53,6 @@ flutter_icons:
   ios: true
   image_path: "assets/tasbeeh_counter.png"
   min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#FFFFFF"

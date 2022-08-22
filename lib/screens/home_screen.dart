@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/screens/home_body.dart';
