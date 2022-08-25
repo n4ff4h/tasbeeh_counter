@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/screens/home_body.dart';
@@ -23,11 +22,37 @@ class HomeScreen extends ConsumerWidget {
         backgroundColor: scaffoldBackgroundColor,
         elevation: 0,
         centerTitle: true,
-        title: const Text(
-          'Tasbeeh Counter',
-          style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Tasbeeh Counter',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 3),
+            RichText(
+              text: TextSpan(
+                children: [
+                  const TextSpan(
+                    text: 'Alert value: ',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Color(0xFFBCD1D0),
+                    ),
+                  ),
+                  TextSpan(
+                    text: buttonRow.alertCount.toString(),
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      color: Color(0xFFFFCB42),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
       body: const HomeBody(),

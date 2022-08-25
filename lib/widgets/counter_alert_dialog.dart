@@ -34,7 +34,7 @@ Future<int?> showCounterAlertDialog(
             children: [
               const Center(
                 child: Text(
-                  'Alert value:',
+                  'Set alert value:',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
