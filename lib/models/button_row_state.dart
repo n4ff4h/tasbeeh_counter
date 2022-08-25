@@ -7,7 +7,7 @@ class ButtonRowState with _$ButtonRowState {
   const factory ButtonRowState({
     required bool hasToggledSound,
     required bool hasToggledVibrate,
-    required int notificationCount,
+    required int alertCount,
     required bool isDarkMode,
   }) = _ButtonRowState;
 }

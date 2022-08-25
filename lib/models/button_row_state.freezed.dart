@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ButtonRowState {
   bool get hasToggledSound => throw _privateConstructorUsedError;
   bool get hasToggledVibrate => throw _privateConstructorUsedError;
-  int get notificationCount => throw _privateConstructorUsedError;
+  int get alertCount => throw _privateConstructorUsedError;
   bool get isDarkMode => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $ButtonRowStateCopyWith<$Res> {
   $Res call(
       {bool hasToggledSound,
       bool hasToggledVibrate,
-      int notificationCount,
+      int alertCount,
       bool isDarkMode});
 }
 
@@ -51,7 +51,7 @@ class _$ButtonRowStateCopyWithImpl<$Res>
   $Res call({
     Object? hasToggledSound = freezed,
     Object? hasToggledVibrate = freezed,
-    Object? notificationCount = freezed,
+    Object? alertCount = freezed,
     Object? isDarkMode = freezed,
   }) {
     return _then(_value.copyWith(
@@ -63,9 +63,9 @@ class _$ButtonRowStateCopyWithImpl<$Res>
           ? _value.hasToggledVibrate
           : hasToggledVibrate // ignore: cast_nullable_to_non_nullable
               as bool,
-      notificationCount: notificationCount == freezed
-          ? _value.notificationCount
-          : notificationCount // ignore: cast_nullable_to_non_nullable
+      alertCount: alertCount == freezed
+          ? _value.alertCount
+          : alertCount // ignore: cast_nullable_to_non_nullable
               as int,
       isDarkMode: isDarkMode == freezed
           ? _value.isDarkMode
@@ -85,7 +85,7 @@ abstract class _$$_ButtonRowStateCopyWith<$Res>
   $Res call(
       {bool hasToggledSound,
       bool hasToggledVibrate,
-      int notificationCount,
+      int alertCount,
       bool isDarkMode});
 }
 
@@ -104,7 +104,7 @@ class __$$_ButtonRowStateCopyWithImpl<$Res>
   $Res call({
     Object? hasToggledSound = freezed,
     Object? hasToggledVibrate = freezed,
-    Object? notificationCount = freezed,
+    Object? alertCount = freezed,
     Object? isDarkMode = freezed,
   }) {
     return _then(_$_ButtonRowState(
@@ -116,9 +116,9 @@ class __$$_ButtonRowStateCopyWithImpl<$Res>
           ? _value.hasToggledVibrate
           : hasToggledVibrate // ignore: cast_nullable_to_non_nullable
               as bool,
-      notificationCount: notificationCount == freezed
-          ? _value.notificationCount
-          : notificationCount // ignore: cast_nullable_to_non_nullable
+      alertCount: alertCount == freezed
+          ? _value.alertCount
+          : alertCount // ignore: cast_nullable_to_non_nullable
               as int,
       isDarkMode: isDarkMode == freezed
           ? _value.isDarkMode
@@ -136,7 +136,7 @@ class _$_ButtonRowState
   const _$_ButtonRowState(
       {required this.hasToggledSound,
       required this.hasToggledVibrate,
-      required this.notificationCount,
+      required this.alertCount,
       required this.isDarkMode});
 
   @override
@@ -144,13 +144,13 @@ class _$_ButtonRowState
   @override
   final bool hasToggledVibrate;
   @override
-  final int notificationCount;
+  final int alertCount;
   @override
   final bool isDarkMode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ButtonRowState(hasToggledSound: $hasToggledSound, hasToggledVibrate: $hasToggledVibrate, notificationCount: $notificationCount, isDarkMode: $isDarkMode)';
+    return 'ButtonRowState(hasToggledSound: $hasToggledSound, hasToggledVibrate: $hasToggledVibrate, alertCount: $alertCount, isDarkMode: $isDarkMode)';
   }
 
   @override
@@ -160,7 +160,7 @@ class _$_ButtonRowState
       ..add(DiagnosticsProperty('type', 'ButtonRowState'))
       ..add(DiagnosticsProperty('hasToggledSound', hasToggledSound))
       ..add(DiagnosticsProperty('hasToggledVibrate', hasToggledVibrate))
-      ..add(DiagnosticsProperty('notificationCount', notificationCount))
+      ..add(DiagnosticsProperty('alertCount', alertCount))
       ..add(DiagnosticsProperty('isDarkMode', isDarkMode));
   }
 
@@ -174,7 +174,7 @@ class _$_ButtonRowState
             const DeepCollectionEquality()
                 .equals(other.hasToggledVibrate, hasToggledVibrate) &&
             const DeepCollectionEquality()
-                .equals(other.notificationCount, notificationCount) &&
+                .equals(other.alertCount, alertCount) &&
             const DeepCollectionEquality()
                 .equals(other.isDarkMode, isDarkMode));
   }
@@ -184,7 +184,7 @@ class _$_ButtonRowState
       runtimeType,
       const DeepCollectionEquality().hash(hasToggledSound),
       const DeepCollectionEquality().hash(hasToggledVibrate),
-      const DeepCollectionEquality().hash(notificationCount),
+      const DeepCollectionEquality().hash(alertCount),
       const DeepCollectionEquality().hash(isDarkMode));
 
   @JsonKey(ignore: true)
@@ -197,7 +197,7 @@ abstract class _ButtonRowState implements ButtonRowState {
   const factory _ButtonRowState(
       {required final bool hasToggledSound,
       required final bool hasToggledVibrate,
-      required final int notificationCount,
+      required final int alertCount,
       required final bool isDarkMode}) = _$_ButtonRowState;
 
   @override
@@ -205,7 +205,7 @@ abstract class _ButtonRowState implements ButtonRowState {
   @override
   bool get hasToggledVibrate;
   @override
-  int get notificationCount;
+  int get alertCount;
   @override
   bool get isDarkMode;
   @override

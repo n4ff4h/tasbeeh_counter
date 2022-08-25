@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/screens/home_body.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
 import 'package:tasbeeh_counter/widgets/circular_button.dart';
+import 'package:tasbeeh_counter/widgets/counter_alert_dialog.dart';
 import 'package:tasbeeh_counter/widgets/toggle_button.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -35,16 +37,19 @@ class HomeScreen extends ConsumerWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            // Sound toggle button
             ToggleButton(
               icon: Icons.volume_up_rounded,
               onPressed: buttonRowNotifier.toggleSound,
               buttonActiveState: buttonRow.hasToggledSound,
             ),
+            // Vibration toggle button
             ToggleButton(
               icon: Icons.vibration_rounded,
               onPressed: buttonRowNotifier.toggleVibration,
               buttonActiveState: buttonRow.hasToggledVibrate,
             ),
+            // Alert count button
             CircularButton(
               size: iconButtonSize,
               color: primaryColor,
@@ -53,8 +58,16 @@ class HomeScreen extends ConsumerWidget {
                 color: iconColor,
                 size: iconSize,
               ),
-              onPressed: () {},
+              onPressed: () async {
+                int? notificationCount = await showCounterAlertDialog(
+                  context,
+                  buttonRow.alertCount,
+                  size,
+                );
+                buttonRowNotifier.setAlertCount(notificationCount ?? 33);
+              },
             ),
+            // Dark theme toggle button
             ToggleButton(
               icon: Icons.dark_mode_rounded,
               onPressed: buttonRowNotifier.setDarkMode,

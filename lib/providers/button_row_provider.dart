@@ -19,9 +19,8 @@ class ButtonRowNotifier extends StateNotifier<ButtonRowState> {
             hasToggledVibrate:
                 _read(sharedPreferencesProvider).getBool('hasToggledVibrate') ??
                     false,
-            notificationCount:
-                _read(sharedPreferencesProvider).getInt('notificationCount') ??
-                    0,
+            alertCount:
+                _read(sharedPreferencesProvider).getInt('alertCount') ?? 33,
             isDarkMode:
                 _read(sharedPreferencesProvider).getBool('isDarkMode') ?? false,
           ),
@@ -41,10 +40,9 @@ class ButtonRowNotifier extends StateNotifier<ButtonRowState> {
         .setBool('hasToggledVibrate', hasToggledVibrate);
   }
 
-  void setNotificationCount() {
-    int notificationCount = state.notificationCount;
-    _read(sharedPreferencesProvider)
-        .setInt('notificationCount', notificationCount);
+  void setAlertCount(int alertCount) {
+    state = state.copyWith(alertCount: alertCount);
+    _read(sharedPreferencesProvider).setInt('notificationCount', alertCount);
   }
 
   void setDarkMode() {
