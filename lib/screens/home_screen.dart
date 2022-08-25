@@ -64,7 +64,8 @@ class HomeScreen extends ConsumerWidget {
                   buttonRow.alertCount,
                   size,
                 );
-                buttonRowNotifier.setAlertCount(notificationCount ?? 33);
+                buttonRowNotifier
+                    .setAlertCount(notificationCount ?? buttonRow.alertCount);
               },
             ),
             // Dark theme toggle button
