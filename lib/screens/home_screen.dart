@@ -18,6 +18,7 @@ class HomeScreen extends ConsumerWidget {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: scaffoldBackgroundColor,
         elevation: 0,
