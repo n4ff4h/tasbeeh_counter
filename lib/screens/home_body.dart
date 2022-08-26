@@ -14,8 +14,11 @@ class HomeBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final counter = ref.watch(counterProvider);
     final counterNotifier = ref.watch(counterProvider.notifier);
     final buttonRow = ref.watch(buttonRowProvider);
+
+    final bool isButtonDisabled = (counter == 0) ? true : false;
 
     const String assetName = 'assets/images/tasbeeh_counter_layout.svg';
 
@@ -60,24 +63,48 @@ class HomeBody extends ConsumerWidget {
                     CircularButton(
                       size: iconButtonSize,
                       color: secondaryColor,
+                      onPressed: isButtonDisabled
+                          ? null
+                          : () {
+                              counterNotifier.decrement();
+                              if (buttonRow.hasToggledVibrate) {
+                                HapticFeedback.vibrate();
+                              }
+                              if (buttonRow.hasToggledSound) {
+                                AudioPlayer().play(
+                                  AssetSource('audios/click.wav'),
+                                );
+                              }
+                            },
                       child: const Icon(
                         Icons.undo_rounded,
                         color: iconColor,
                         size: iconSize,
                       ),
-                      onPressed: () => counterNotifier.decrement(),
                     ),
                     const SizedBox(width: 105),
                     // Refresh button
                     CircularButton(
                       size: iconButtonSize,
                       color: secondaryColor,
+                      onPressed: isButtonDisabled
+                          ? null
+                          : () {
+                              counterNotifier.reset();
+                              if (buttonRow.hasToggledVibrate) {
+                                HapticFeedback.vibrate();
+                              }
+                              if (buttonRow.hasToggledSound) {
+                                AudioPlayer().play(
+                                  AssetSource('audios/click.wav'),
+                                );
+                              }
+                            },
                       child: const Icon(
                         Icons.refresh_rounded,
                         color: iconColor,
                         size: iconSize,
                       ),
-                      onPressed: () => counterNotifier.reset(),
                     ),
                   ],
                 ),

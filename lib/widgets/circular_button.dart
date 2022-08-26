@@ -4,7 +4,7 @@ class CircularButton extends StatelessWidget {
   final dynamic child;
   final double size;
   final Color color;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const CircularButton({
     Key? key,
