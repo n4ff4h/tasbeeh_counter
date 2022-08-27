@@ -3,9 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/screens/home_body.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
-import 'package:tasbeeh_counter/widgets/circular_button.dart';
 import 'package:tasbeeh_counter/widgets/counter_alert_dialog.dart';
-import 'package:tasbeeh_counter/widgets/toggle_button.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,8 +12,13 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final buttonRow = ref.watch(buttonRowProvider);
     final buttonRowNotifier = ref.watch(buttonRowProvider.notifier);
-
     final Size size = MediaQuery.of(context).size;
+
+    ButtonStyle toggleColor(bool state) {
+      return ElevatedButton.styleFrom(
+        primary: state ? toggleButtonActiveColor : primaryColor,
+      );
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -64,26 +67,20 @@ class HomeScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             // Sound toggle button
-            ToggleButton(
-              icon: Icons.volume_up_rounded,
+            ElevatedButton(
+              style: toggleColor(buttonRow.hasToggledSound),
               onPressed: buttonRowNotifier.toggleSound,
-              buttonActiveState: buttonRow.hasToggledSound,
+              child: icon(Icons.volume_up_rounded),
             ),
             // Vibration toggle button
-            ToggleButton(
-              icon: Icons.vibration_rounded,
+            ElevatedButton(
+              style: toggleColor(buttonRow.hasToggledVibrate),
               onPressed: buttonRowNotifier.toggleVibration,
-              buttonActiveState: buttonRow.hasToggledVibrate,
+              child: icon(Icons.vibration_rounded),
             ),
             // Alert count button
-            CircularButton(
-              size: iconButtonSize,
-              color: primaryColor,
-              child: const Icon(
-                Icons.notification_add_rounded,
-                color: iconColor,
-                size: iconSize,
-              ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: primaryColor),
               onPressed: () async {
                 int? notificationCount = await showCounterAlertDialog(
                   context,
@@ -93,12 +90,13 @@ class HomeScreen extends ConsumerWidget {
                 buttonRowNotifier
                     .setAlertCount(notificationCount ?? buttonRow.alertCount);
               },
+              child: icon(Icons.notification_add_rounded),
             ),
             // Dark theme toggle button
-            ToggleButton(
-              icon: Icons.dark_mode_rounded,
+            ElevatedButton(
+              style: toggleColor(buttonRow.isDarkMode),
               onPressed: buttonRowNotifier.setDarkMode,
-              buttonActiveState: buttonRow.isDarkMode,
+              child: icon(Icons.dark_mode_rounded),
             ),
           ],
         ),

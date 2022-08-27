@@ -4,11 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:tasbeeh_counter/models/button_row_state.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/providers/counter_provider.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
-import 'package:tasbeeh_counter/widgets/circular_button.dart';
 import 'package:tasbeeh_counter/widgets/counter_display.dart';
 
 class HomeBody extends ConsumerWidget {
@@ -22,6 +20,15 @@ class HomeBody extends ConsumerWidget {
 
     final bool isButtonDisabled = (counter == 0) ? true : false;
     const String assetName = 'assets/images/tasbeeh_counter_layout.svg';
+
+    ButtonStyle undoAndResetButtonStyle = ButtonStyle(
+      backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
+        if (states.contains(MaterialState.disabled)) {
+          return secondaryColor; // Disabled color
+        }
+        return secondaryColor; // Regular color
+      }),
+    );
 
     void beepAndVibrate() {
       if (buttonRow.hasToggledVibrate) {
@@ -72,45 +79,36 @@ class HomeBody extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Undo button
-                    CircularButton(
-                      size: iconButtonSize,
-                      color: secondaryColor,
+                    ElevatedButton(
+                      style: undoAndResetButtonStyle,
                       onPressed: isButtonDisabled
                           ? null
                           : () {
                               counterNotifier.decrement();
                               beepAndVibrate();
                             },
-                      child: const Icon(
-                        Icons.undo_rounded,
-                        color: iconColor,
-                        size: iconSize,
-                      ),
+                      child: icon(Icons.undo_rounded),
                     ),
                     const SizedBox(width: 105),
                     // Refresh button
-                    CircularButton(
-                      size: iconButtonSize,
-                      color: secondaryColor,
+                    ElevatedButton(
+                      style: undoAndResetButtonStyle,
                       onPressed: isButtonDisabled
                           ? null
                           : () {
                               counterNotifier.reset();
                               beepAndVibrate();
                             },
-                      child: const Icon(
-                        Icons.refresh_rounded,
-                        color: iconColor,
-                        size: iconSize,
-                      ),
+                      child: icon(Icons.refresh_rounded),
                     ),
                   ],
                 ),
                 // Increment button
-                CircularButton(
-                  size: counterButtonSize,
-                  color: primaryColor,
-                  child: null,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(counterButtonSize),
+                    primary: primaryColor,
+                  ),
                   onPressed: () {
                     counterNotifier.increment();
                     beepAndVibrate();
@@ -128,6 +126,7 @@ class HomeBody extends ConsumerWidget {
                       );
                     }
                   },
+                  child: null,
                 ),
               ],
             ),

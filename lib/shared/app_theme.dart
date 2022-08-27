@@ -10,12 +10,28 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: scaffoldBackgroundColor,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(const CircleBorder()),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+        backgroundColor: MaterialStateProperty.all(primaryColor),
+        elevation: MaterialStateProperty.all(0),
+      ),
+    ),
   );
 
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: scaffoldBackgroundColor,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(const CircleBorder()),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+        // backgroundColor: MaterialStateProperty.all(primaryColor),
+        elevation: MaterialStateProperty.all(0),
+      ),
     ),
   );
 }
