@@ -23,12 +23,15 @@ class HomeBody extends ConsumerWidget {
     final bool isButtonDisabled = (counter == 0) ? true : false;
     const String assetName = 'assets/images/tasbeeh_counter_layout.svg';
 
-    void showSnackBar(BuildContext context) {
-      const snackBar = SnackBar(
-        content: Text('Alert value reached!'),
-        duration: Duration(seconds: 2),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    void beepAndVibrate() {
+      if (buttonRow.hasToggledVibrate) {
+        HapticFeedback.vibrate();
+      }
+      if (buttonRow.hasToggledSound) {
+        AudioPlayer().play(
+          AssetSource('audios/click.wav'),
+        );
+      }
     }
 
     return Stack(
@@ -76,7 +79,7 @@ class HomeBody extends ConsumerWidget {
                           ? null
                           : () {
                               counterNotifier.decrement();
-                              beepAndVibrate(buttonRow);
+                              beepAndVibrate();
                             },
                       child: const Icon(
                         Icons.undo_rounded,
@@ -93,7 +96,7 @@ class HomeBody extends ConsumerWidget {
                           ? null
                           : () {
                               counterNotifier.reset();
-                              beepAndVibrate(buttonRow);
+                              beepAndVibrate();
                             },
                       child: const Icon(
                         Icons.refresh_rounded,
@@ -110,7 +113,7 @@ class HomeBody extends ConsumerWidget {
                   child: null,
                   onPressed: () {
                     counterNotifier.increment();
-                    beepAndVibrate(buttonRow);
+                    beepAndVibrate();
 
                     if ((counter + 1) % buttonRow.alertCount == 0) {
                       showSimpleNotification(
@@ -132,16 +135,5 @@ class HomeBody extends ConsumerWidget {
         ),
       ],
     );
-  }
-
-  void beepAndVibrate(ButtonRowState buttonRow) {
-    if (buttonRow.hasToggledVibrate) {
-      HapticFeedback.vibrate();
-    }
-    if (buttonRow.hasToggledSound) {
-      AudioPlayer().play(
-        AssetSource('audios/click.wav'),
-      );
-    }
   }
 }
