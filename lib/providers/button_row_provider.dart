@@ -42,7 +42,7 @@ class ButtonRowNotifier extends StateNotifier<ButtonRowState> {
 
   void setAlertCount(int alertCount) {
     state = state.copyWith(alertCount: alertCount);
-    _read(sharedPreferencesProvider).setInt('notificationCount', alertCount);
+    _read(sharedPreferencesProvider).setInt('alertCount', alertCount);
   }
 
   void setDarkMode() {

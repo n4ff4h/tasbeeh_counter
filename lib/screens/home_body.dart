@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tasbeeh_counter/models/button_row_state.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/providers/counter_provider.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
@@ -19,8 +20,15 @@ class HomeBody extends ConsumerWidget {
     final buttonRow = ref.watch(buttonRowProvider);
 
     final bool isButtonDisabled = (counter == 0) ? true : false;
-
     const String assetName = 'assets/images/tasbeeh_counter_layout.svg';
+
+    void showSnackBar(BuildContext context) {
+      const snackBar = SnackBar(
+        content: Text('Alert value reached!'),
+        duration: Duration(seconds: 2),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
 
     return Stack(
       children: [
@@ -67,14 +75,7 @@ class HomeBody extends ConsumerWidget {
                           ? null
                           : () {
                               counterNotifier.decrement();
-                              if (buttonRow.hasToggledVibrate) {
-                                HapticFeedback.vibrate();
-                              }
-                              if (buttonRow.hasToggledSound) {
-                                AudioPlayer().play(
-                                  AssetSource('audios/click.wav'),
-                                );
-                              }
+                              beepAndVibrate(buttonRow);
                             },
                       child: const Icon(
                         Icons.undo_rounded,
@@ -91,14 +92,7 @@ class HomeBody extends ConsumerWidget {
                           ? null
                           : () {
                               counterNotifier.reset();
-                              if (buttonRow.hasToggledVibrate) {
-                                HapticFeedback.vibrate();
-                              }
-                              if (buttonRow.hasToggledSound) {
-                                AudioPlayer().play(
-                                  AssetSource('audios/click.wav'),
-                                );
-                              }
+                              beepAndVibrate(buttonRow);
                             },
                       child: const Icon(
                         Icons.refresh_rounded,
@@ -115,13 +109,10 @@ class HomeBody extends ConsumerWidget {
                   child: null,
                   onPressed: () {
                     counterNotifier.increment();
-                    if (buttonRow.hasToggledVibrate) {
-                      HapticFeedback.vibrate();
-                    }
-                    if (buttonRow.hasToggledSound) {
-                      AudioPlayer().play(
-                        AssetSource('audios/click.wav'),
-                      );
+                    beepAndVibrate(buttonRow);
+
+                    if ((counter + 1) % buttonRow.alertCount == 0) {
+                      showSnackBar(context);
                     }
                   },
                 ),
@@ -131,5 +122,16 @@ class HomeBody extends ConsumerWidget {
         ),
       ],
     );
+  }
+
+  void beepAndVibrate(ButtonRowState buttonRow) {
+    if (buttonRow.hasToggledVibrate) {
+      HapticFeedback.vibrate();
+    }
+    if (buttonRow.hasToggledSound) {
+      AudioPlayer().play(
+        AssetSource('audios/click.wav'),
+      );
+    }
   }
 }
