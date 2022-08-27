@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:tasbeeh_counter/models/button_row_state.dart';
 import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/providers/counter_provider.dart';
@@ -112,7 +113,16 @@ class HomeBody extends ConsumerWidget {
                     beepAndVibrate(buttonRow);
 
                     if ((counter + 1) % buttonRow.alertCount == 0) {
-                      showSnackBar(context);
+                      showSimpleNotification(
+                        const Center(
+                          child: Text(
+                            "Alert value reached!",
+                            style: TextStyle(fontSize: 20.0),
+                          ),
+                        ),
+                        background: const Color(0xFF566B6A),
+                        elevation: 2,
+                      );
                     }
                   },
                 ),

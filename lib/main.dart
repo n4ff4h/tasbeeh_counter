@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasbeeh_counter/global_providers.dart';
 import 'package:tasbeeh_counter/screens/home_screen.dart';
@@ -24,10 +25,12 @@ class TasbeehCounterApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: themeData,
-      home: const HomeScreen(),
+    return OverlaySupport.global(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: themeData,
+        home: const HomeScreen(),
+      ),
     );
   }
 }
