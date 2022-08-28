@@ -16,7 +16,7 @@ class HomeScreen extends ConsumerWidget {
 
     ButtonStyle toggleColor(bool state) {
       return ElevatedButton.styleFrom(
-        primary: state ? toggleButtonActiveColor : primaryColor,
+        primary: state ? secondaryColor : primaryLightColor,
       );
     }
 
@@ -50,7 +50,7 @@ class HomeScreen extends ConsumerWidget {
                     text: buttonRow.alertCount.toString(),
                     style: const TextStyle(
                       fontSize: 14.0,
-                      color: Color(0xFFFFCB42),
+                      color: secondaryColor,
                     ),
                   ),
                 ],
@@ -80,7 +80,7 @@ class HomeScreen extends ConsumerWidget {
             ),
             // Alert count button
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: primaryColor),
+              style: ElevatedButton.styleFrom(primary: primaryLightColor),
               onPressed: () async {
                 int? notificationCount = await showCounterAlertDialog(
                   context,

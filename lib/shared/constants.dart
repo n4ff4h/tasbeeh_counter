@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 // Colors
-const primaryColor = Color(0xFF89ABAA);
-const secondaryColor = Color(0xFF6A8584);
-const scaffoldBackgroundColor = secondaryColor;
+const primaryLightColor = Color(0xFF89ABAA);
+const primaryColor = Color(0xFF6A8584);
+const primaryDarker = Color(0xFF566B6A);
+const secondaryColor = Color(0xFFFFCB42);
+const scaffoldBackgroundColor = primaryColor;
 const tasbeehCounterColor = Color(0xFF4B5E5E);
 const iconColor = tasbeehCounterColor;
-const toggleButtonActiveColor = Color(0xFFFFCB42);
 
 // Sizes
 const double iconSize = 32;
@@ -36,6 +37,5 @@ const inputDecoration = InputDecoration(
 );
 
 const dialogButtonTextStyle = TextStyle(
-  color: Color(0xFFFFCB42),
   fontSize: 16,
 );

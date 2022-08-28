@@ -14,7 +14,7 @@ class AppTheme {
       style: ButtonStyle(
         shape: MaterialStateProperty.all(const CircleBorder()),
         padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
-        backgroundColor: MaterialStateProperty.all(primaryColor),
+        backgroundColor: MaterialStateProperty.all(primaryLightColor),
         elevation: MaterialStateProperty.all(0),
       ),
     ),

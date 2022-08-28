@@ -24,9 +24,9 @@ class HomeBody extends ConsumerWidget {
     ButtonStyle undoAndResetButtonStyle = ButtonStyle(
       backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
         if (states.contains(MaterialState.disabled)) {
-          return secondaryColor; // Disabled color
+          return primaryColor; // Disabled color
         }
-        return secondaryColor; // Regular color
+        return primaryColor; // Regular color
       }),
     );
 
@@ -49,7 +49,7 @@ class HomeBody extends ConsumerWidget {
             padding: const EdgeInsets.only(top: 20),
             child: SvgPicture.asset(
               assetName,
-              color: primaryColor,
+              color: primaryLightColor,
               height: outerTasbeehCounterSvgSize,
               width: outerTasbeehCounterSvgSize,
             ),
@@ -107,7 +107,7 @@ class HomeBody extends ConsumerWidget {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(counterButtonSize),
-                    primary: primaryColor,
+                    primary: primaryLightColor,
                   ),
                   onPressed: () {
                     counterNotifier.increment();
@@ -121,7 +121,7 @@ class HomeBody extends ConsumerWidget {
                             style: TextStyle(fontSize: 20.0),
                           ),
                         ),
-                        background: const Color(0xFF566B6A),
+                        background: primaryDarker,
                         elevation: 2,
                       );
                     }

@@ -45,7 +45,7 @@ Future<int?> showCounterAlertDialog(
               TextField(
                 controller: controller,
                 autofocus: true,
-                cursorColor: primaryColor,
+                cursorColor: primaryLightColor,
                 textAlign: TextAlign.center,
                 decoration: inputDecoration,
                 keyboardType: TextInputType.number,
@@ -57,12 +57,14 @@ Future<int?> showCounterAlertDialog(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
+                    style: TextButton.styleFrom(primary: secondaryColor),
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     child: const Text('Cancel', style: dialogButtonTextStyle),
                   ),
                   TextButton(
+                    style: TextButton.styleFrom(primary: secondaryColor),
                     onPressed: () {
                       Navigator.pop(
                         context,
