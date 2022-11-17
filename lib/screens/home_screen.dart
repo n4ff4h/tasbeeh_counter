@@ -14,18 +14,25 @@ class HomeScreen extends ConsumerWidget {
     final buttonRowNotifier = ref.watch(buttonRowProvider.notifier);
     final Size size = MediaQuery.of(context).size;
 
-    ButtonStyle toggleColor(bool state) {
+    ButtonStyle toggleButtonColor(bool state) {
       return ElevatedButton.styleFrom(
-        primary: state ? secondaryColor : primaryLightColor,
+        primary: state
+            ? (buttonRow.isDarkMode ? darkSecondaryColor : secondaryColor)
+            : (buttonRow.isDarkMode
+                ? const Color(0xFF222831)
+                : primaryLightColor),
       );
+    }
+
+    Color toggleButtonIconColor(bool state) {
+      return state
+          ? (buttonRow.isDarkMode ? const Color(0xFF6c757d) : iconColor)
+          : (buttonRow.isDarkMode ? darkIconColor : iconColor);
     }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: scaffoldBackgroundColor,
-        elevation: 0,
-        centerTitle: true,
         title: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -48,9 +55,11 @@ class HomeScreen extends ConsumerWidget {
                   ),
                   TextSpan(
                     text: buttonRow.alertCount.toString(),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14.0,
-                      color: secondaryColor,
+                      color: buttonRow.isDarkMode
+                          ? const Color(0xFFFF2E63)
+                          : secondaryColor,
                     ),
                   ),
                 ],
@@ -68,19 +77,30 @@ class HomeScreen extends ConsumerWidget {
           children: [
             // Sound toggle button
             ElevatedButton(
-              style: toggleColor(buttonRow.hasToggledSound),
+              style: toggleButtonColor(buttonRow.hasToggledSound),
               onPressed: buttonRowNotifier.toggleSound,
-              child: icon(Icons.volume_up_rounded),
+              child: Icon(
+                Icons.volume_up_rounded,
+                color: toggleButtonIconColor(buttonRow.hasToggledSound),
+                size: iconSize,
+              ),
             ),
             // Vibration toggle button
             ElevatedButton(
-              style: toggleColor(buttonRow.hasToggledVibrate),
+              style: toggleButtonColor(buttonRow.hasToggledVibrate),
               onPressed: buttonRowNotifier.toggleVibration,
-              child: icon(Icons.vibration_rounded),
+              child: Icon(
+                Icons.vibration_rounded,
+                color: toggleButtonIconColor(buttonRow.hasToggledVibrate),
+                size: iconSize,
+              ),
             ),
             // Alert count button
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: primaryLightColor),
+              style: ElevatedButton.styleFrom(
+                  primary: buttonRow.isDarkMode
+                      ? const Color(0xFF222831)
+                      : primaryLightColor),
               onPressed: () async {
                 int? notificationCount = await showCounterAlertDialog(
                   context,
@@ -90,13 +110,21 @@ class HomeScreen extends ConsumerWidget {
                 buttonRowNotifier
                     .setAlertCount(notificationCount ?? buttonRow.alertCount);
               },
-              child: icon(Icons.notification_add_rounded),
+              child: Icon(
+                Icons.notification_add_rounded,
+                color: buttonRow.isDarkMode ? darkIconColor : iconColor,
+                size: iconSize,
+              ),
             ),
             // Dark theme toggle button
             ElevatedButton(
-              style: toggleColor(buttonRow.isDarkMode),
+              style: toggleButtonColor(buttonRow.isDarkMode),
               onPressed: buttonRowNotifier.setDarkMode,
-              child: icon(Icons.dark_mode_rounded),
+              child: Icon(
+                Icons.dark_mode_rounded,
+                color: toggleButtonIconColor(buttonRow.isDarkMode),
+                size: iconSize,
+              ),
             ),
           ],
         ),

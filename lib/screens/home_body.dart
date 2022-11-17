@@ -24,9 +24,13 @@ class HomeBody extends ConsumerWidget {
     ButtonStyle undoAndResetButtonStyle = ButtonStyle(
       backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
         if (states.contains(MaterialState.disabled)) {
-          return primaryColor; // Disabled color
+          return buttonRow.isDarkMode
+              ? darkPrimaryLightColor
+              : primaryColor; // Disabled color
         }
-        return primaryColor; // Regular color
+        return buttonRow.isDarkMode
+            ? darkPrimaryLightColor
+            : primaryColor; // Regular color
       }),
     );
 
@@ -49,7 +53,8 @@ class HomeBody extends ConsumerWidget {
             padding: const EdgeInsets.only(top: 20),
             child: SvgPicture.asset(
               assetName,
-              color: primaryLightColor,
+              color:
+                  buttonRow.isDarkMode ? darkPrimaryColor : primaryLightColor,
               height: outerTasbeehCounterSvgSize,
               width: outerTasbeehCounterSvgSize,
             ),
@@ -61,7 +66,9 @@ class HomeBody extends ConsumerWidget {
             padding: const EdgeInsets.only(top: 20),
             child: SvgPicture.asset(
               assetName,
-              color: tasbeehCounterColor,
+              color: buttonRow.isDarkMode
+                  ? darkPrimaryDarker
+                  : tasbeehCounterColor,
               height: innerTasbeehCounterSvgSize,
               width: innerTasbeehCounterSvgSize,
             ),
@@ -87,7 +94,13 @@ class HomeBody extends ConsumerWidget {
                               counterNotifier.decrement();
                               beepAndVibrate();
                             },
-                      child: icon(Icons.undo_rounded),
+                      child: Icon(
+                        Icons.undo_rounded,
+                        color: buttonRow.isDarkMode
+                            ? const Color(0xFF343a40)
+                            : iconColor,
+                        size: iconSize,
+                      ),
                     ),
                     const SizedBox(width: 105),
                     // Refresh button
@@ -99,7 +112,13 @@ class HomeBody extends ConsumerWidget {
                               counterNotifier.reset();
                               beepAndVibrate();
                             },
-                      child: icon(Icons.refresh_rounded),
+                      child: Icon(
+                        Icons.refresh_rounded,
+                        color: buttonRow.isDarkMode
+                            ? const Color(0xFF343a40)
+                            : iconColor,
+                        size: iconSize,
+                      ),
                     ),
                   ],
                 ),
@@ -107,7 +126,9 @@ class HomeBody extends ConsumerWidget {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(counterButtonSize),
-                    primary: primaryLightColor,
+                    primary: buttonRow.isDarkMode
+                        ? const Color(0xFFadb5bd)
+                        : primaryLightColor,
                   ),
                   onPressed: () {
                     counterNotifier.increment();
@@ -121,7 +142,9 @@ class HomeBody extends ConsumerWidget {
                             style: TextStyle(fontSize: 20.0),
                           ),
                         ),
-                        background: primaryDarker,
+                        background: buttonRow.isDarkMode
+                            ? const Color(0xFF6c757d)
+                            : primaryDarker,
                         elevation: 2,
                       );
                     }

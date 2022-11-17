@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Colors
+// Light colors
 const primaryLightColor = Color(0xFF89ABAA);
 const primaryColor = Color(0xFF6A8584);
 const primaryDarker = Color(0xFF566B6A);
@@ -8,6 +8,15 @@ const secondaryColor = Color(0xFFFFCB42);
 const scaffoldBackgroundColor = primaryColor;
 const tasbeehCounterColor = Color(0xFF4B5E5E);
 const iconColor = tasbeehCounterColor;
+
+// Dark colors
+const darkPrimaryLightColor = Color(0xFF6c757d);
+const darkPrimaryColor = Color(0xFF393E46);
+const darkPrimaryDarker = Color(0xFF292D33);
+const darkSecondaryColor = Color(0xFFdee2e6);
+const darkScaffoldBackgroundColor = Color(0xFF000000);
+const darkTasbeehCounterColor = Color(0xFF4B5E5E);
+const darkIconColor = Color(0xFFadb5bd);
 
 // Sizes
 const double iconSize = 32;

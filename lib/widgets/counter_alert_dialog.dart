@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/shared/constants.dart';
 
 Future<int?> showCounterAlertDialog(
@@ -53,30 +55,38 @@ Future<int?> showCounterAlertDialog(
                   FilteringTextInputFormatter.digitsOnly
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    style: TextButton.styleFrom(primary: secondaryColor),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Cancel', style: dialogButtonTextStyle),
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(primary: secondaryColor),
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                        controller.text.isNotEmpty
-                            ? int.parse(controller.text)
-                            : 33,
-                      );
-                    },
-                    child: const Text('Save', style: dialogButtonTextStyle),
-                  ),
-                ],
-              )
+              Consumer(builder: (context, ref, _) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          primary: ref.read(buttonRowProvider).isDarkMode
+                              ? const Color(0xFFFF2E63)
+                              : secondaryColor),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Cancel', style: dialogButtonTextStyle),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          primary: ref.read(buttonRowProvider).isDarkMode
+                              ? const Color(0xFFFF2E63)
+                              : secondaryColor),
+                      onPressed: () {
+                        Navigator.pop(
+                          context,
+                          controller.text.isNotEmpty
+                              ? int.parse(controller.text)
+                              : 33,
+                        );
+                      },
+                      child: const Text('Save', style: dialogButtonTextStyle),
+                    ),
+                  ],
+                );
+              })
             ],
           ),
         ),

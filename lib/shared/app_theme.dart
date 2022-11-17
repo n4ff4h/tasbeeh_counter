@@ -9,6 +9,8 @@ class AppTheme {
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: scaffoldBackgroundColor,
+      elevation: 0,
+      centerTitle: true,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -21,9 +23,11 @@ class AppTheme {
   );
 
   static final darkTheme = ThemeData(
-    scaffoldBackgroundColor: scaffoldBackgroundColor,
+    scaffoldBackgroundColor: darkScaffoldBackgroundColor,
     appBarTheme: const AppBarTheme(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: darkScaffoldBackgroundColor,
+      elevation: 0,
+      centerTitle: true,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

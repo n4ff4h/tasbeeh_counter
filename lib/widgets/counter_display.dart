@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:tasbeeh_counter/providers/button_row_provider.dart';
 import 'package:tasbeeh_counter/providers/counter_provider.dart';
+import 'package:tasbeeh_counter/shared/constants.dart';
 import 'package:tasbeeh_counter/widgets/digital_font/digital_font.dart';
 
 class CounterDisplay extends ConsumerWidget {
@@ -11,6 +13,7 @@ class CounterDisplay extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.watch(counterProvider);
+    final buttonRow = ref.watch(buttonRowProvider);
 
     return Center(
       child: Container(
@@ -18,7 +21,9 @@ class CounterDisplay extends ConsumerWidget {
         width: 190,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          color: const Color(0xFFB1D7B4),
+          color: buttonRow.isDarkMode
+              ? darkPrimaryLightColor
+              : const Color(0xFFB1D7B4),
         ),
         child: Center(
           child: LayoutBuilder(
