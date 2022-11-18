@@ -61,7 +61,7 @@ Future<int?> showCounterAlertDialog(
                   children: [
                     TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor:
+                          foregroundColor:
                               ref.read(buttonRowProvider).isDarkMode
                                   ? const Color(0xFFFF2E63)
                                   : secondaryColor),
@@ -72,7 +72,7 @@ Future<int?> showCounterAlertDialog(
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor:
+                          foregroundColor:
                               ref.read(buttonRowProvider).isDarkMode
                                   ? const Color(0xFFFF2E63)
                                   : secondaryColor),
