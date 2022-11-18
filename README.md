@@ -4,5 +4,10 @@ Simple tasbeeh counter app made with Flutter. This project is sort of a copy of 
 
 ## Preview
 
+### Light Mode
+
 ![alt text](https://github.com/n4ff4h/tasbeeh_counter/blob/main/.github/tasbeeh_counter_light.jpeg?raw=true)
+
+### Dark Mode
+
 ![alt text](https://github.com/n4ff4h/tasbeeh_counter/blob/main/.github/tasbeeh_counter_dark.jpeg?raw=true)
