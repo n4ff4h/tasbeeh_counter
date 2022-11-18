@@ -126,7 +126,7 @@ class HomeBody extends ConsumerWidget {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(counterButtonSize),
-                    primary: buttonRow.isDarkMode
+                    backgroundColor: buttonRow.isDarkMode
                         ? const Color(0xFFadb5bd)
                         : primaryLightColor,
                   ),

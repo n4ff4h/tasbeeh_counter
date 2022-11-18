@@ -61,9 +61,10 @@ Future<int?> showCounterAlertDialog(
                   children: [
                     TextButton(
                       style: TextButton.styleFrom(
-                          primary: ref.read(buttonRowProvider).isDarkMode
-                              ? const Color(0xFFFF2E63)
-                              : secondaryColor),
+                          backgroundColor:
+                              ref.read(buttonRowProvider).isDarkMode
+                                  ? const Color(0xFFFF2E63)
+                                  : secondaryColor),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -71,9 +72,10 @@ Future<int?> showCounterAlertDialog(
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
-                          primary: ref.read(buttonRowProvider).isDarkMode
-                              ? const Color(0xFFFF2E63)
-                              : secondaryColor),
+                          backgroundColor:
+                              ref.read(buttonRowProvider).isDarkMode
+                                  ? const Color(0xFFFF2E63)
+                                  : secondaryColor),
                       onPressed: () {
                         Navigator.pop(
                           context,
