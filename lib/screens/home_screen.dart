@@ -46,11 +46,13 @@ class HomeScreen extends ConsumerWidget {
             RichText(
               text: TextSpan(
                 children: [
-                  const TextSpan(
+                  TextSpan(
                     text: 'Alert value: ',
                     style: TextStyle(
                       fontSize: 14.0,
-                      color: Color(0xFFBCD1D0),
+                      color: buttonRow.isDarkMode
+                          ? darkIconColor
+                          : const Color(0xFFBCD1D0),
                     ),
                   ),
                   TextSpan(
