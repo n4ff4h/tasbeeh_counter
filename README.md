@@ -1,6 +1,6 @@
 # Tasbeeh Counter
 
-Simple tasbeeh counter app made with Flutter. This project is sort of a copy of [Tasbih Counter Lite: Dhikr App](https://play.google.com/store/apps/details?id=com.sevapp.tasbih_counter_lite_zikir&hl=en&gl=US) (without additional themes option) for learning purposes. My main objectives were learning state management using `riverpod` and `freezed` package as well as organizing my code using MVVM architecture.
+Simple tasbeeh counter app made with Flutter. This project is sort of a copy of [Tasbih Counter Lite: Dhikr App](https://play.google.com/store/apps/details?id=com.sevapp.tasbih_counter_lite_zikir&hl=en&gl=US) (without additional themes option) for learning purposes. My main objectives were learning state management using `riverpod` and `freezed` packages as well as organizing my code using MVVM architecture.
 
 ## Preview
 

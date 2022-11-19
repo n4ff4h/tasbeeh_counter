@@ -13,13 +13,13 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  flutter_launcher_icons: ^0.10.0
+  flutter_launcher_icons: ^0.11.0
   hooks_riverpod: ^1.0.4
   flutter_svg: ^1.1.4
   shared_preferences: ^2.0.15
   freezed_annotation: ^2.1.0
   audioplayers: ^1.0.1
-  flutter_native_splash: ^2.2.8
+  flutter_native_splash: ^2.2.14
   overlay_support: ^2.0.1
 
 dev_dependencies:
@@ -52,8 +52,9 @@ flutter:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/tasbeeh_counter.png"
+  image_path: "assets/images/launcher_icon.png"
   min_sdk_android: 21
 
 flutter_native_splash:
   color: "#FFFFFF"
+  image: assets/images/splash_icon.png
