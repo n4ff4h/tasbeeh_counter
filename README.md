@@ -11,3 +11,7 @@ Simple tasbeeh counter app made with Flutter. This project is sort of a copy of 
 ### Dark Mode
 
 ![alt text](https://github.com/n4ff4h/tasbeeh_counter/blob/main/.github/tasbeeh_counter_dark.jpeg?raw=true)
+
+## Credits, and Thanks to
+
+- [@maisaanium](https://www.instagram.com/maisaanium/?hl=en) for the beautiful app icon.
