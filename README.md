@@ -15,3 +15,4 @@ Simple tasbeeh counter app made with Flutter. This project is sort of a copy of 
 ## Credits, and Thanks to
 
 - [@maisaanium](https://www.instagram.com/maisaanium/?hl=en) for the beautiful app icon.
+- [@killermonk](https://github.com/killermonk) for the code for digital font.
