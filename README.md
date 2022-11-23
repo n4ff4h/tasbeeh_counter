@@ -6,11 +6,11 @@ Simple tasbeeh counter app made with Flutter. This project is sort of a copy of 
 
 ### Light Mode
 
-![alt text](https://github.com/n4ff4h/tasbeeh_counter/blob/main/.github/tasbeeh_counter_light.jpeg?raw=true)
+<img src=".github/tasbeeh_counter_light.jpeg" width="250">
 
 ### Dark Mode
 
-![alt text](https://github.com/n4ff4h/tasbeeh_counter/blob/main/.github/tasbeeh_counter_dark.jpeg?raw=true)
+<img src=".github/tasbeeh_counter_dark.jpeg" width="250">
 
 ## Credits, and Thanks to
 
