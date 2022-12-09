@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,14 +27,20 @@ class TasbeehCounterApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final buttonRow = ref.watch(buttonRowProvider);
+    // Device orientation
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
     return OverlaySupport.global(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        themeMode: buttonRow.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        themeMode: ref.watch(buttonRowProvider).isDarkMode
+            ? ThemeMode.dark
+            : ThemeMode.light,
         home: const HomeScreen(),
       ),
     );
