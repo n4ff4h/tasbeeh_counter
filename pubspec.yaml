@@ -3,7 +3,7 @@ description: Simple tasbeeh counter app made with Flutter.
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
